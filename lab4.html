@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zeshan's Store</title>
+  <script>
+    alert("Welcome to Zeshan's Store!");
+
+    var name = prompt("What is your name?");
+    var item = prompt("What item would you like to order?");
+    var quantity = prompt("How many would you like to order? (1-99)");
+
+    var now = new Date();
+    var hour = now.getHours();
+    var greeting = "";
+
+    if (hour < 12) {
+      greeting = "Good Morning";
+    } else if (hour < 18) {
+      greeting = "Good Afternoon";
+    } else {
+      greeting = "Good Evening";
+    }
+
+    var arrivalDate = new Date();
+    arrivalDate.setDate(now.getDate() + 7);
+
+    document.write("<h1>Zeshan's Online Store</h1>");
+    document.write("<h2>" + greeting + " " + name + ", Thank you for ordering!</h2>");
+    document.write("<p>You ordered <b>" + quantity + "</b> unit(s) of <b>" + item + "</b>.</p>");
+    document.write("<p>Your order will arrive on <b>" + arrivalDate.toDateString() + "</b>.</p>");
+    document.write("<hr><p>Thank you for shopping with us!</p>");
+  </script>
+</head>
+<body>
+</body>
+</html>
