@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Registration Page</title>
+</head>
+<body>
+  <h2>Iphone Raffle Registration</h2>
+
+  First Name: <input id="first"><br><br>
+  Last Name: <input id="last"><br><br>
+  Email: <input id="email"><br><br>
+  Password ( must contain "!" or "?"): <input type="password" id="pass"><br><br>
+  Date of Birth (month/day/year): <input type="text" id="dob"><br><br>
+
+  <button onclick="register()">Register</button>
+
+  <p id="msg"></p>
+
+  <script>
+    function register() {
+      var f = document.getElementById("first").value;
+      var l = document.getElementById("last").value;
+      var e = document.getElementById("email").value;
+      var p = document.getElementById("pass").value;
+      var d = document.getElementById("dob").value;
+      
+      if (!(p.includes("!") || p.includes("?"))) {
+        document.getElementById("msg").innerHTML = "Password must have ! or ?";
+        return;
+      }
+      var hide = "*".repeat(p.length);
+
+      document.getElementById("msg").innerHTML =
+        "Registration Successful!<br>" +
+        "First Name: " + f + "<br>" +
+        "Last Name: " + l + "<br>" +
+        "Email: " + e + "<br>" +
+        "Password: " + hide + "<br>" +
+        "Date of Birth: " + d;
+    }
+  </script>
+</body>
+</html>
