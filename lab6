@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cat Facts</title>
+</head>
+<body>
+  <h1>Cat Facts</h1>
+  <img id="catImage" src="https://placekitten.com/200/200" width="200" height="200">
+  <br><br>
+  <button onclick="getFacts()">Get Cat Facts</button>
+  <br><br>
+  <table border="1" id="factTable">
+    <tr>
+      <th>factId</th>
+      <th>fact</th>
+    </tr>
+  </table>
+
+  <script>
+    function getFacts() {
+      var request = new XMLHttpRequest();
+      request.open("GET", "https://brianobruno.github.io/cats.json");
+      request.onload = function() {
+        var data = JSON.parse(request.responseText);
+        var facts = data.facts;
+        facts.sort(function(a, b) { return a.factId - b.factId; });
+        var table = document.getElementById("factTable");
+        table.innerHTML = "<tr><th>factId</th><th>fact</th></tr>";
+        for (var i = 0; i < facts.length; i++) {
+          table.innerHTML += "<tr><td>" + facts[i].factId + "</td><td>" + facts[i].text + "</td></tr>";
+        }
+        document.getElementById("catImage").src = data.catPhoto;
+      };
+      request.send();
+    }
+  </script>
+</body>
+</html>
+
